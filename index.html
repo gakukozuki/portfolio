@@ -37,7 +37,7 @@
 
     <main>
       <!-- プロフィール -->
-      <section class="" id="profile">
+      <section id="profile">
         <h1 class="text-center mb-5">Profile</h1>
         <div class="container">
           <img src="img/profile.png" class="mx-auto d-block mt-5">
@@ -112,7 +112,7 @@
         <h1 class="text-center mb-5">Mission</h1>
         <div class="container">
           <div class="text-center mb-5">
-            <p>迅速かつ高品質なサービスを届けられるよう尽力致します。</p>
+            <p>迅速かつ高品質のサービスを届けられるよう尽力致します。</p>
             <p>また、駆け出しフリーランスということもあり、低単価での案件の受注を考えております。</p>
             <p>どうぞ、よろしくお願いします。</p>
           </div>
@@ -147,7 +147,7 @@
           &copy; Gaku Kozuki
         </h5>
       </section>
-      <p id="page-top"><a href="#top">PAGE TOP</a></p>
+      <p class="page-top"><a href="#top">PAGE TOP</a></p>
     </footer>
 
 
@@ -156,5 +156,38 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(function() {
+        var topBtn = $('.page-top');
+        topBtn.hide();
+
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+
+            topBtn.fadeIn();
+          } else {
+            topBtn.fadeOut();
+          }
+        });
+        topBtn.click(function () {
+          $('body,  html').animate({
+          scrollTop: 0
+          },   500);
+          return false;
+        });
+      });
+
+      $('a[href^="#"]').click(function() {
+        var speed = 400;
+        var href = $(this).attr("href");
+        var target = $(href == "#" || href == "" ? 'html' : href);
+        var position = target.offset().top;
+        $('body,html').animate({
+          scrollTop: position
+        }, speed, 'swing');
+        return false;
+      });
+    </script>
   </body>
 </html>
